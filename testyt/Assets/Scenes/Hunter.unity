@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3dee85e425b58440813d0f4dcace9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpeed: 5
+  startSpeed: 3.5
 --- !u!50 &276059618
 Rigidbody2D:
   serializedVersion: 4
@@ -447,7 +447,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276059614}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: eb8ef1750295a4c45a5951cf690630fe, type: 2}
   m_CullingMode: 0
