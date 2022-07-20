@@ -31,6 +31,7 @@ public class Hunter : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
 
         animator.SetFloat("MoSpeed", movement.sqrMagnitude);
+        animator.SetBool("SpeedRun", HiderFind);
 
         if (Input.GetKeyDown("d"))
             SideTrigger = true;
