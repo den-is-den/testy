@@ -9,7 +9,7 @@ public class Hunter : MonoBehaviour
     Vector2 movement;                   //вектор координат
 
     private Rigidbody2D rb;
-    //private Animator animator;
+    private Animator animator;
     SpriteRenderer sr;
 
     private bool SideTrigger = false;   //флаг на переключение (вправо/влево)
@@ -18,7 +18,7 @@ public class Hunter : MonoBehaviour
     {
         moveSpeed = startSpeed;
         rb = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
     }
     void Update()
@@ -26,7 +26,7 @@ public class Hunter : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        //animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetFloat("MoSpeed", movement.sqrMagnitude);
         //animator.SetBool("HideBushTrigger", HideState);
 
         if (Input.GetKeyDown("d"))
