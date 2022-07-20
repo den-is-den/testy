@@ -2,27 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BushMovement : MonoBehaviour
+public class Hider : MonoBehaviour
 {
-    private float moveSpeed = 5f;
-    Vector2 movement;
+    public  float startSpeed = 5f;      //начальная скорость 
+    private float moveSpeed;            //скорость
+    Vector2 movement;                   //вектор координат
 
     private Rigidbody2D rb;
     private Animator animator;
     SpriteRenderer sr;
 
-    private bool SideTrigger = false; 
-    private bool HideState = false;   
-    private bool SpaceOrder = false;
+    private bool SideTrigger = false;   //флаг на переключение (вправо/влево)
+    private bool HideState = false;     //флаг на (спрятался/не спрятался) в куст
 
     void Start()
     {
+        moveSpeed = startSpeed;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
     }
     void Update()
-    {
+    {   
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -33,17 +34,9 @@ public class BushMovement : MonoBehaviour
             SideTrigger = true;
         else if (Input.GetKeyDown("a"))
             SideTrigger = false;
-
-        if (Input.GetKeyDown("space") && !SpaceOrder)
-        {
-            HideState = true;
-            SpaceOrder = true;
-        }
-        else if (Input.GetKeyDown("space") && SpaceOrder)
-        {
-            HideState = false;
-            SpaceOrder = false;
-        }
+        
+        if (Input.GetKeyDown("space"))
+            HideState = !HideState;
     }
     void FixedUpdate()
     {
@@ -51,8 +44,8 @@ public class BushMovement : MonoBehaviour
         sr.flipX = SideTrigger == true ? true : false;
 
         if (HideState)
-            moveSpeed = 1.5f;
+            moveSpeed = (3f / 10) * startSpeed;
         else
-            moveSpeed = 5f;
+            moveSpeed = startSpeed;
     }
 }
