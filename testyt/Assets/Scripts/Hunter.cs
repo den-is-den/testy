@@ -42,16 +42,24 @@ public class Hunter : MonoBehaviour
             HiderFind = true;
         else
             HiderFind = false;
+
+        if (HiderFind)
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
+            Debug.Log(moveSpeed);
+        }
+        else
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
+            Debug.Log(moveSpeed);
+        }
     }
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         sr.flipX = SideTrigger == true ? true : false;
 
-        if (HiderFind)
-            moveSpeed = (2f) * startSpeed;
-        else
-            moveSpeed = startSpeed;
+
     }
     private bool IsVisible(Camera camera, GameObject target)
     {
