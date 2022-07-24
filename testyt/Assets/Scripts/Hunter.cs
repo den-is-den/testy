@@ -48,6 +48,7 @@ public class Hunter : MonoBehaviour
             HiderFind = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (HiderFind)
         {
             moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
@@ -59,6 +60,13 @@ public class Hunter : MonoBehaviour
             Debug.Log(moveSpeed);
         }
 =======
+>>>>>>> remotes/origin/Lol
+=======
+        if (HiderFind)
+            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
+        else
+            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
+
 >>>>>>> remotes/origin/Lol
     }
     void FixedUpdate()
