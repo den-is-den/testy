@@ -10,21 +10,17 @@ public class Hunter : MonoBehaviour
 
     public Camera cam;
     private GameObject hider;
-    private GameObject bush;
-
     private Rigidbody2D rb;
     private Animator animator;
     SpriteRenderer sr;
 
     private bool SideTrigger = false;   //флаг на переключение (вправо/влево)
     private bool HiderFind = false;     //флаг на (увидел/не увидел) Hider
-    private bool InBush = false;        //флаг на (находится/не находится) в кусте
 
     void Start()
     {
         moveSpeed = startSpeed;
         hider = GameObject.FindGameObjectWithTag("Hider");
-        bush = GameObject.FindGameObjectWithTag("Bush");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -47,8 +43,6 @@ public class Hunter : MonoBehaviour
         else
             HiderFind = false;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (HiderFind)
         {
             moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
@@ -59,15 +53,6 @@ public class Hunter : MonoBehaviour
             moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
             Debug.Log(moveSpeed);
         }
-=======
->>>>>>> remotes/origin/Lol
-=======
-        if (HiderFind)
-            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
-        else
-            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
-
->>>>>>> remotes/origin/Lol
     }
     void FixedUpdate()
     {
@@ -75,16 +60,6 @@ public class Hunter : MonoBehaviour
         sr.flipX = SideTrigger == true ? true : false;
 
 
-    }
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bush")
-            InBush = true;    
-    }
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bush")
-            InBush = false;
     }
     private bool IsVisible(Camera camera, GameObject target)
     {
