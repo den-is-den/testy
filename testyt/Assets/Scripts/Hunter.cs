@@ -47,16 +47,18 @@ public class Hunter : MonoBehaviour
         else
             HiderFind = false;
 
+        if (HiderFind)
+            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
+        else
+            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
+
     }
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         sr.flipX = SideTrigger == true ? true : false;
 
-        if (HiderFind)
-            moveSpeed = (2f) * startSpeed;
-        else
-            moveSpeed = startSpeed;
+
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
