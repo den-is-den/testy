@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Hider.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Loading.unity
+    guid: 90357171c1d5b05458ce7d97606b3795
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 8e33a1c6c4f515844b412301e611c586
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: eee95d223bbc4ac42a9bf002fd307f84
   m_configObjects: {}
