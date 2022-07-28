@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Hunter : MonoBehaviour
 {
-    public float startSpeed = 5f;       //начальная скорость 
+    public float startSpeed = 5f;
+    PhotonView view;                    //начальная скорость 
     public float timeSpin = 5f;         //время поиска в кусте 
     private float moveSpeed;            //скорость
     Vector2 movement;                   //вектор координат
+    public bool facingRight = false;
 
     public Camera cam;
     private GameObject hider;
@@ -28,44 +31,56 @@ public class Hunter : MonoBehaviour
         bush = GameObject.FindGameObjectWithTag("Bush");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
+        view = GetComponent<PhotonView>();
+        //sr = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("MoSpeed", movement.sqrMagnitude);
-        animator.SetBool("SpeedRun", HiderFind);
-
-        if (Input.GetKeyDown("d"))
-            SideTrigger = true;
-        else if (Input.GetKeyDown("a"))
-            SideTrigger = false;
-
-        if (IsVisible(cam, hider))
-            HiderFind = true;
-        else
-            HiderFind = false;
-
-        if (HiderFind)
-            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
-        else
-            moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
-
-        if (Input.GetKeyDown("space") && InBush)
+        if (view.IsMine)
         {
-            sr.sortingOrder = 1;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            animator.SetBool("Seak", true);
-            Invoke("SeakAnimEnd", timeSpin);
-        }
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
+            animator.SetFloat("MoSpeed", movement.sqrMagnitude);
+            animator.SetBool("SpeedRun", HiderFind);
+
+            /*if (Input.GetKeyDown("d"))
+                SideTrigger = true;
+            else if (Input.GetKeyDown("a"))
+                SideTrigger = false;*/
+
+            if (IsVisible(cam, hider))
+                HiderFind = true;
+            else
+                HiderFind = false;
+
+            if (HiderFind)
+                moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
+            else
+                moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
+
+            if (Input.GetKeyDown("space") && InBush)
+            {
+                //sr.sortingOrder = 1;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                animator.SetBool("Seak", true);
+                Invoke("SeakAnimEnd", timeSpin);
+            }
+        }
     }
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        sr.flipX = SideTrigger == true ? true : false;
+        if (view.IsMine)
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            //sr.flipX = SideTrigger == true ? true : false;
+
+            float h = Input.GetAxis("Horizontal");
+            if (h > 0 && !facingRight)
+                Flip();
+            else if (h < 0 && facingRight)
+                Flip();
+        }
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -91,7 +106,17 @@ public class Hunter : MonoBehaviour
     private void SeakAnimEnd()
     {
         animator.SetBool("Seak", false);
-        sr.sortingOrder = 0;
+        //sr.sortingOrder = 0;
         rb.constraints = RigidbodyConstraints2D.None;
+    }
+    void Flip()
+    {
+        if (view.IsMine)
+        {
+            facingRight = !facingRight;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
     }
 }

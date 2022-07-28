@@ -419,7 +419,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa0c49e6b9a2324a8ba724fbc892570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3379182011952029652, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
+  playerOne: {fileID: 5065253240789216906, guid: b34aa1468fcbd8f488916f3ea5833da8, type: 3}
+  playerTwo: {fileID: 3379182011952029652, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
+  anyCam: {fileID: 0}
   minX: -4
   minY: -4
   maxX: 4
