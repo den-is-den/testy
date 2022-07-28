@@ -108,6 +108,7 @@ public class Hunter : MonoBehaviour
         animator.SetBool("Seak", false);
         //sr.sortingOrder = 0;
         rb.constraints = RigidbodyConstraints2D.None;
+        Global.newBush = true;
     }
     void Flip()
     {
