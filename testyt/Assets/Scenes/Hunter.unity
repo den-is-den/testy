@@ -643,5 +643,17 @@ PrefabInstance:
       propertyPath: m_SynchronizeParameters.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7559064625089116543, guid: b34aa1468fcbd8f488916f3ea5833da8, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559064625089116543, guid: b34aa1468fcbd8f488916f3ea5833da8, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559064625089116543, guid: b34aa1468fcbd8f488916f3ea5833da8, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[2].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b34aa1468fcbd8f488916f3ea5833da8, type: 3}
