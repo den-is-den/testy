@@ -275,10 +275,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.74}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.125}
     oldSize: {x: 1.92, y: 1.92}
     newSize: {x: 1.92, y: 1.92}
     adaptiveTilingThreshold: 0.5
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _object: {fileID: 1430804506}
-  distance: {x: 0, y: 0, z: -10}
+  distance: {x: 0, y: 0.475, z: -10}
   camSpeed: 0.08
 --- !u!1 &916753908
 GameObject:
@@ -647,7 +647,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.45}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52, y: 0.15}
+    pivot: {x: 0.52, y: 0.125}
     oldSize: {x: 1.92, y: 1.92}
     newSize: {x: 1.92, y: 1.92}
     adaptiveTilingThreshold: 0.5
@@ -758,6 +758,10 @@ PrefabInstance:
     - target: {fileID: 3379182011952029652, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
       propertyPath: m_Name
       value: Hider
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379182011952029653, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3379182011952029678, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
       propertyPath: m_RootOrder

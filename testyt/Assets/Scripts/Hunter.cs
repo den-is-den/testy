@@ -6,10 +6,10 @@ using Photon.Pun;
 public class Hunter : MonoBehaviour
 {
     public float startSpeed = 5f;
-    PhotonView view;                    //начальная скорость 
-    public float timeSpin = 5f;         //время поиска в кусте 
-    private float moveSpeed;            //скорость
-    Vector2 movement;                   //вектор координат
+    PhotonView view;
+    public float timeSpin = 5f;
+    private float moveSpeed;
+    Vector2 movement;
     public bool facingRight = false;
 
     //public Camera cam;
@@ -20,9 +20,9 @@ public class Hunter : MonoBehaviour
     private Animator animator;
     SpriteRenderer sr;
 
-    private bool SideTrigger = false;   //флаг на переключение (вправо/влево)
-    private bool HiderFind = false;     //флаг на (увидел/не увидел) Hider
-    private bool InBush = false;        //флаг на (находится/не находится) в кусте
+    private bool SideTrigger = false;
+    private bool HiderFind = false;
+    private bool InBush = false;
 
     void Start()
     {
