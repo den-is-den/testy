@@ -449,11 +449,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00479c97e66b341419fc9447025f70cd, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a4953cdfb57894582a9732b5a273b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 1430804506}
-  distance: {x: 0, y: 0.475, z: -10}
+  player: {fileID: 1430804516}
+  distance: {x: 0, y: 0, z: -10}
   camSpeed: 0.08
 --- !u!1 &916753908
 GameObject:
@@ -607,9 +607,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1430804506 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3379182011952029652, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
+--- !u!4 &1430804516 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3379182011952029678, guid: 0a78f2b78e05dc14686dfac52e2d9668, type: 3}
   m_PrefabInstance: {fileID: 3379182010521225166}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1626332151

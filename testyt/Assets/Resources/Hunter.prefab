@@ -256,6 +256,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: Seak
+  - Type: 4
+    SynchronizeType: 1
+    Name: ScytheSkill
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

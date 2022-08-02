@@ -25,6 +25,10 @@ public class Hider : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         //sr = GetComponent<SpriteRenderer>();
+        if (view.Owner.IsLocal)
+        {
+            Camera.main.GetComponent<CameraFollow>().player = gameObject.transform;
+        }
     }
     void Update()
     {

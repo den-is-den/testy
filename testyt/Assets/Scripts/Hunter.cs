@@ -33,6 +33,10 @@ public class Hunter : MonoBehaviour
         animator = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
         //sr = GetComponent<SpriteRenderer>();
+        if (view.Owner.IsLocal)
+        {
+            Camera.main.GetComponent<CameraFollow>().player = gameObject.transform;
+        }
     }
     void Update()
     {
