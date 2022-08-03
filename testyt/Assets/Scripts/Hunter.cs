@@ -12,7 +12,7 @@ public class Hunter : MonoBehaviour
     Vector2 movement;
     public bool facingRight = false;
 
-    //public Camera cam;
+    public Camera cam;
     private GameObject hider;
     private GameObject bush;
 
@@ -53,7 +53,7 @@ public class Hunter : MonoBehaviour
             else if (Input.GetKeyDown("a"))
                 SideTrigger = false;*/
 
-            /*if (IsVisible(cam, hider))
+            if (IsVisible(cam, hider))
                 HiderFind = true;
             else
                 HiderFind = false;
@@ -61,7 +61,7 @@ public class Hunter : MonoBehaviour
             if (HiderFind)
                 moveSpeed = Mathf.Lerp(moveSpeed, startSpeed * (2f), 0.006f);
             else
-                moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);*/
+                moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);
 
             if (Input.GetKeyDown("space") && InBush)
             {
