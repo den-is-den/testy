@@ -13,22 +13,22 @@ public class Hunter : MonoBehaviour
     public bool facingRight = false;
 
     //public Camera cam;
-    private GameObject hider;
-    private GameObject bush;
 
     private Rigidbody2D rb;
     private Animator animator;
+    private Bush bush_obj;
+    private Animator hider_obj;
     SpriteRenderer sr;
 
-    private bool SideTrigger = false;
+    //private bool SideTrigger = false;
     private bool HiderFind = false;
     private bool InBush = false;
+    private bool IsHider = false;
+    private bool CanTouch = false;
 
     void Start()
     {
         moveSpeed = startSpeed;
-        hider = GameObject.FindGameObjectWithTag("Hider");
-        bush = GameObject.FindGameObjectWithTag("Bush");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         view = GetComponent<PhotonView>();
@@ -63,7 +63,14 @@ public class Hunter : MonoBehaviour
             else
                 moveSpeed = Mathf.Lerp(moveSpeed, startSpeed, 0.006f);*/
 
-            if (Input.GetKeyDown("space") && InBush)
+            if (Input.GetKeyDown("space") && InBush && CanTouch)
+            {
+                //sr.sortingOrder = 1;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                animator.SetBool("Seak", true);
+                Invoke("SeakAnimEnd", timeSpin);
+            }
+            if (Input.GetKeyDown("space") && IsHider && CanTouch)
             {
                 //sr.sortingOrder = 1;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -89,12 +96,28 @@ public class Hunter : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bush")
+        {
             InBush = true;
+            bush_obj = collision.GetComponent<Bush>();
+            if (!bush_obj.newBush) CanTouch = true;
+        }
+        if (collision.gameObject.tag == "Hider")
+        {
+            IsHider = true;
+            hider_obj = collision.GetComponent<Animator>();
+            if (!hider_obj.GetBool("Catch")) CanTouch = true;
+        }
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bush")
+        {
             InBush = false;
+        }
+        if (collision.gameObject.tag == "Hider")
+        {
+            IsHider = false;
+        }
     }
     private bool IsVisible(Camera camera, GameObject target)
     {
@@ -112,7 +135,16 @@ public class Hunter : MonoBehaviour
         animator.SetBool("Seak", false);
         //sr.sortingOrder = 0;
         rb.constraints = RigidbodyConstraints2D.None;
-        Global.newBush = true;
+        if (InBush)
+        {
+            bush_obj.newBush = true;
+            CanTouch = false;
+        }
+        if (IsHider)
+        {
+            hider_obj.SetBool("Catch", true);
+            CanTouch = false;
+        }
     }
     void Flip()
     {

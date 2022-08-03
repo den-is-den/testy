@@ -7,6 +7,7 @@ public class Bush : MonoBehaviour
 {
     private Animator animator;
     PhotonView view;
+    public bool newBush = false;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class Bush : MonoBehaviour
     {
         if (view.IsMine)
         {
-            if (Global.newBush)
+            if (newBush)
                 animator.SetBool("BushSwap", true);
             else
                 animator.SetBool("BushSwap", false);
